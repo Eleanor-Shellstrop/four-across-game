@@ -3,6 +3,10 @@ class Token {
         this.owner = owner;
         this.id = `token-${index}-${owner.id}`;
         this.dropped = false;
+        this.columnLocation = 0;
+    }
+    get offsetLeft() {
+
     }
     drawHTMLToken() {
         const token = document.createElement('div');
@@ -10,5 +14,11 @@ class Token {
         token.setAttribute('id', this.id);
         token.setAttribute('class', 'token');
         token.style.backgroundColor = this.owner.color;
+    }
+    moveLeft() {
+
+    }
+    moveRight() {
+        
     }
 }
