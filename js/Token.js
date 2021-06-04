@@ -5,8 +5,11 @@ class Token {
         this.dropped = false;
         this.columnLocation = 0;
     }
+    get htmlToken() {
+        return document.getElementById(this.id);
+    }
     get offsetLeft() {
-        return this.drawHTMLToken.offsetLeft;
+        return this.htmlToken.offsetLeft;
     }
     drawHTMLToken() {
         const token = document.createElement('div');

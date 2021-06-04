@@ -9,7 +9,7 @@ class Board {
         for (let x = 0; x < this.columns; x++) {
             const column = [];
             
-            for (let y = 0; y < this.columns; y++) {
+            for (let y = 0; y < this.rows; y++) {
                 const space = new Space(x, y);
                 column.push(space);
             }
