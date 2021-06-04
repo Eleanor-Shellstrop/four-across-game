@@ -43,9 +43,30 @@ class Game {
         }
 
         if (targetSpace != null) {
-            newGame.ready = false;
-            activeToken.drop(targetSpace);
+            const game = this;
+            game.ready = false;
+            activeToken.drop(targetSpace, function(){
+                game.updateGameState(activeToken, targetSpace); 
+            });
         }
+    }
+    updateGameState(token, target) {
+		target.mark(token);
+
+        if (!this.checkForWin(target)) {
+            console.log('no win');
+			this.switchPlayers();
+            
+            if (this.activePlayer.checkTokens()) {
+                this.activePlayer.activeToken.drawHTMLToken();
+                this.ready = true;
+            } else {
+                this.gameOver('No more tokens');
+            }
+        } else {
+			console.log('win');
+            this.gameOver(`${target.owner.name} wins!`)
+        }			
     }
     checkForWin(target){
         const owner = target.token.owner;
@@ -100,5 +121,14 @@ class Game {
         }
     
         return win;
+    }
+    switchPlayers() {
+		for (let player of this.players) {
+			player.active = player.active === true ? false : true;
+		}
+    }
+    gameOver(message) {
+        document.getElementById('game-over').style.display = 'block';
+        document.getElementById('game-over').textContent = message;
     }
 }
