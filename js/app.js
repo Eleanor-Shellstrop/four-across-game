@@ -4,6 +4,6 @@ const startGameButton = document.getElementById('begin-game');
 
 startGameButton.addEventListener('click', () => {
     newGame.startGame();
-    this.style.display = 'none';
+    startGameButton.style.display = 'none';
     document.getElementById('play-area').style.opacity = '1';
 })

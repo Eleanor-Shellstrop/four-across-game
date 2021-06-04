@@ -8,9 +8,10 @@ class Board {
         const spaces = [];
         for (let x = 0; x < this.columns; x++) {
             const column = [];
-            for (let x = 0; x < this.columns; x++) {
+            
+            for (let y = 0; y < this.columns; y++) {
                 const space = new Space(x, y);
-                this.columns.push(space);
+                column.push(space);
             }
             spaces.push(column);
         }
